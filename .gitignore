@@ -44,13 +44,3 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
-
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
-
-.gitignore
-.gradle/5.4.1/vcsMetadata-1/
-build/generated/
-build/tmp/
-src/main/resources/
-src/test/
