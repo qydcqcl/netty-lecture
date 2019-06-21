@@ -11,16 +11,16 @@ import io.netty.util.CharsetUtil;
 
 /**
  * @author hzq
- * @date 2019/6/20 0020 下午 11:33
+ * @date 2019/6/21 12:46
  */
-public class MyChatServerInitializer3 extends ChannelInitializer<SocketChannel> {
+public class MyChatClientInitializer3 extends ChannelInitializer<SocketChannel> {
 
     @Override
-    protected void initChannel(SocketChannel ch) throws Exception {
+    protected void initChannel(SocketChannel ch) {
         ChannelPipeline pipeline = ch.pipeline();
         pipeline.addLast(new DelimiterBasedFrameDecoder(4096, Delimiters.lineDelimiter()));
         pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
-        pipeline.addLast(new MyChatServerHandler3());
+        pipeline.addLast(new MyChatClienthandler3());
     }
 }

@@ -11,9 +11,9 @@ import io.netty.util.concurrent.GlobalEventExecutor;
  * @author hzq
  * @date 2019/6/20 0020 下午 11:35
  */
-public class MyChatHandler3 extends SimpleChannelInboundHandler<String> {
+public class MyChatServerHandler3 extends SimpleChannelInboundHandler<String> {
 
-    private ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    private static  ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
@@ -22,10 +22,9 @@ public class MyChatHandler3 extends SimpleChannelInboundHandler<String> {
             if(channel != ch){
                 ch.writeAndFlush(channel.remoteAddress() + " 发送的消息: " + msg + "\r\n");
             }else{
-                channel.writeAndFlush("[自己]" + msg + "\r\n");
+                ch.writeAndFlush("[自己]" + msg + "\r\n");
             }
         });
-
     }
 
     @Override
@@ -52,6 +51,7 @@ public class MyChatHandler3 extends SimpleChannelInboundHandler<String> {
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
         channelGroup.writeAndFlush("[服务器] - " + channel.remoteAddress() + "离开\r\n");
+        System.out.println(channelGroup.size());
     }
 
     @Override
