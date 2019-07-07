@@ -1,6 +1,5 @@
 package com.example.netty.fifth;
 
-import com.example.netty.fourth.MyServerInitializer4;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
